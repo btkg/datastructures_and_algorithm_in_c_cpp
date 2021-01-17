@@ -13,7 +13,6 @@ namespace SortTestHelper
     template <typename T>
     void insertionSort(T arr[], int n)
     {
-
         for (int i = 1; i < n; i++)
         {
 
@@ -37,7 +36,7 @@ namespace SortTestHelper
         }
         return arr;
     }
-    
+
     int *gengerateNearlyOrderdArray(int n, int swapTimes)
     {
         int *arr = new int[n];

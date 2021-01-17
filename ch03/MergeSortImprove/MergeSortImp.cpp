@@ -3,11 +3,7 @@
 template <typename T>
 void __merge(T arr[], int l, int mid, int r)
 {
-    T arr_cp[r - l + 1];
-    for (int i = l; i <= r; i++)
-    {
-        arr_cp[i - l] = arr[i];
-    }
+    int *arr_cp = SortTestHelper::copyIntArray(arr, r - l + 1);
 
     int i = l, j = mid + 1;
     for (int k = l; k <= r; k++)
@@ -53,20 +49,9 @@ void mergeSort(T arr[], int n)
 
 int main()
 {
-    int n = 50000;
-    int *arr1 = SortTestHelper::generateRandomArray(n, 0, n);
-    int *arr2 = SortTestHelper::copyIntArray(arr1, n);
-    SortTestHelper::testSort("Merge Sort", mergeSort, arr1, n);
-    SortTestHelper::testSort("Insertion Sort", SortTestHelper::insertionSort, arr2, n);
-    cout << endl;
-    cout << "Test Nearly Ordered Array" << endl;
-    int *arr3 = SortTestHelper::gengerateNearlyOrderdArray(n, 10);
-    int *arr4 = SortTestHelper::copyIntArray(arr3, n);
-    SortTestHelper::testSort("Merge Sort", mergeSort, arr3, n);
-    SortTestHelper::testSort("Insertion Sort", SortTestHelper::insertionSort, arr4, n);
-    delete[] arr1;
-    delete[] arr2;
-    delete[] arr3;
-    delete[] arr4;
+    int n = 100000;
+
+    int *arr = SortTestHelper::generateRandomArray(n, 0, n);
+    SortTestHelper::testSort("Merge Sort", mergeSort, arr, n);
     return 0;
 }
